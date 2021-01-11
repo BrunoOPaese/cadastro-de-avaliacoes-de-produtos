@@ -17,8 +17,8 @@ class ProductRatingsController extends Controller
 
     public function index($product_id) {
         try {
-            $product = Product::findOrFail($product_id);
-            $ratings = $product->ratings()->get();
+            $rating = Product::findOrFail($product_id);
+            $ratings = $rating->productRatings()->get();
             return response()->json($ratings, 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'produto não encontrado'], 404);
@@ -27,8 +27,8 @@ class ProductRatingsController extends Controller
 
     public function show($product_id, $id) {
         try {
-            $product = ProductRatings::findOrFail($id);
-            return response()->json($product, 200);
+            $rating = ProductRatings::findOrFail($id);
+            return response()->json($rating, 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Eegistro não encontrado'], 404);
         }
@@ -50,20 +50,20 @@ class ProductRatingsController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $product = new ProductRatings();
-        $product->name = $request->input('name');
-        $product->comment = $request->input('comment');
-        $product->grade = $request->input('grade');
-        $product->active = $request->input('active');
+        $rating = new ProductRatings();
+        $rating->name = $request->input('name');
+        $rating->comment = $request->input('comment');
+        $rating->grade = $request->input('grade');
+        $rating->product_id = $product_id;
 
-        $product->save();
+        $rating->save();
 
         return response()->json(['message' => 'Avaliação criada com sucesso'], 201);
     }
 
     public function update(Request $request, $product_id, $id) {
         try {
-            $product = ProductRatings::findOrFail($id);
+            $rating = ProductRatings::findOrFail($id);
         } catch (ModelNotFoundException $e) {
             return response()->json(['message' => 'produto não encontrado'], 404);
         }
@@ -82,22 +82,22 @@ class ProductRatingsController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $product = new Product();
-        $product->name = $request->input('name');
-        $product->comment = $request->input('comment');
-        $product->grade = $request->input('grade');
-        $product->active = $request->input('active');
+        $rating = new Product();
+        $rating->name = $request->input('name');
+        $rating->comment = $request->input('comment');
+        $rating->grade = $request->input('grade');
+        
 
-        $product->save();
+        $rating->save();
 
         return response()->json(['message' => 'produto atualizado com sucesso'], 200);
     }
 
     public function delete($product_id, $id) {
         try {
-            $product = ProductRatings::findOrFail($id);
-            $product->delete();
-            return response()->json($product, 200);
+            $rating = ProductRatings::findOrFail($id);
+            $rating->delete();
+            return response()->json($rating, 200);
         } catch (ModelNotFoundException $e) {
             return response()->json(['error' => 'Eegistro não encontrado'], 404);
         }

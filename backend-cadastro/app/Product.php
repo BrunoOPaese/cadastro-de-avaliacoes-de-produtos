@@ -11,8 +11,8 @@ class Product extends Model
         'updated_at',
     ];
 
-    public function ratings() {
-        return $this->hasMany('App\Ratings');
+    public function productRatings() {
+        return $this->hasMany('App\ProductRatings');
     }
 
     public function getActiveAttribute($value) {
