@@ -1,0 +1,28 @@
+<div class="row mt-3">
+    <div class="col-12">
+        
+        <table class="table table-light">
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Comentário</th>
+                <th>Avaliação</th>
+                <th>Ações</th>
+            </tr>
+            <tr *ngFor="let item of items">
+                <td>{{ item.id }}</td>
+                <td>
+                    {{ item.name }}
+                </td>
+                <td>{{ item.comment }}</td>
+                <td>{{ item.grade }} / 5</td>
+                <td>
+                    <div class="btn-group">
+                        <a [routerLink]="'/products/' + product_id + '/ratings/' + item.id" class="btn btn-success">Alterar</a>
+                        <button type="button" class="btn btn-danger" (click)="delete(item.id)">Excluir</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

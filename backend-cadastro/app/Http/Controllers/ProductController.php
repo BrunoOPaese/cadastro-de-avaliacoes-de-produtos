@@ -92,13 +92,13 @@ class ProductController extends Controller
         return response()->json(['message' => 'produto atualizado com sucesso'], 200);
     }
 
-    public function delete($id) {
+    public function destroy($id) {
         try {
             $product = Product::findOrFail($id);
             $product->delete();
             return response()->json($product, 200);
         } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Eegistro não encontrado'], 404);
+            return response()->json(['error' => 'Registro não encontrado'], 404);
         }
     }
 }

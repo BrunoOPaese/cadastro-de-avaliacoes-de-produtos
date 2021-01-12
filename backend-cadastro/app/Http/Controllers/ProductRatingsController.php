@@ -82,7 +82,6 @@ class ProductRatingsController extends Controller
 
         $this->validate($request, $rules, $messages);
 
-        $rating = new Product();
         $rating->name = $request->input('name');
         $rating->comment = $request->input('comment');
         $rating->grade = $request->input('grade');
@@ -93,7 +92,7 @@ class ProductRatingsController extends Controller
         return response()->json(['message' => 'produto atualizado com sucesso'], 200);
     }
 
-    public function delete($product_id, $id) {
+    public function destroy($product_id, $id) {
         try {
             $rating = ProductRatings::findOrFail($id);
             $rating->delete();

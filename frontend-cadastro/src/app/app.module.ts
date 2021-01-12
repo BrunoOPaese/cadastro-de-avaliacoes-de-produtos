@@ -11,6 +11,8 @@ import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { RatingsFormComponent } from './ratings-form/ratings-form.component';
+import { RatingsListComponent } from './ratings-list/ratings-list.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     HeaderComponent,
     MenuComponent,
+    RatingsFormComponent,
+    RatingsListComponent,
   ],
   imports: [
     BrowserModule,
