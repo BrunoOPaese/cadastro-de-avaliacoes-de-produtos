@@ -11,7 +11,7 @@
 |
 */
 
-$router->group(['prefix' => 'produtos'], function() use($router) {
+$router->group(['prefix' => 'produtos/'], function() use($router) {
     $router->get('', ['as' => 'products.index', 'uses' => 'ProductController@index']);
     $router->get('{id}', ['as' => 'products.show', 'uses' => 'ProductController@show']);
     $router->post('', ['as' => 'products.create', 'uses' => 'ProductController@create']);
