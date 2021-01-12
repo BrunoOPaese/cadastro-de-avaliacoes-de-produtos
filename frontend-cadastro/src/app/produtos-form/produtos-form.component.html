@@ -1,0 +1,37 @@
+<div class="row mt-3">
+    <div class="col-12">
+        <form action="" method="post">
+            <input type="hidden" name="id" id="id" [(ngModel)]="item.id">
+            <div class="form-row">
+                <div class="form-group col-6">
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="nome" [(ngModel)]="item.name"/>
+                </div>
+                <div class="form-group col-6">
+                    <label for="price">Preço</label>
+                    <input type="number" name="price" step="any" id="price" class="form-control" placeholder="preço" [(ngModel)]="item.price"/>
+
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-12">
+                    <label for="description">Descrição</label>
+                    <textarea name="description" id="description" class="form-control" rows="5" [(ngModel)]="item.description"></textarea>
+                </div>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="active" class="custom-control-input" id="active" [(ngModel)]="item.active"/>
+                <label for="active" class="custom-control-label">Ativo</label>                
+            </div>
+        </form>
+        
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="btn-group float-right">
+            <button type="button" (click)="save()" class="btn btn-success">Salvar</button>
+            <a routerLink="/products" class="btn btn-danger">Cancelar</a>
+        </div>
+    </div>
+</div>
