@@ -14,6 +14,8 @@ import { RatingsFormComponent } from './ratings-form/ratings-form.component';
 import { RatingsListComponent } from './ratings-list/ratings-list.component';
 import { ListTitleComponent } from './list-title/list-title.component';
 import { FormTitleComponent } from './form-title/form-title.component';
+import { AlertComponent } from './alert/alert.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { FormTitleComponent } from './form-title/form-title.component';
     RatingsListComponent,
     ListTitleComponent,
     FormTitleComponent,
+    AlertComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

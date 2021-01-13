@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductRatingsService } from '../product-ratings.service';
 import { ProductRatings } from '../ProductRatings';
@@ -12,6 +12,10 @@ export class RatingsFormComponent implements OnInit {
 
   item: ProductRatings;
   product_id: number;
+  errors: any;
+
+  @ViewChild('alert') alert;
+
 
   constructor(protected service: ProductRatingsService, private route: ActivatedRoute, private router: Router) { 
     this.item = new ProductRatings();
@@ -48,8 +52,27 @@ export class RatingsFormComponent implements OnInit {
     this.router.navigate(['/products/' + this.product_id + '/ratings']);
   }
 
+  markFields(field: string) {
+    try {
+      let fieldArray = Object.keys(this.errors);
+      if (!fieldArray.includes(field)) {
+        return 'form-control';
+      } else {
+        return 'form-control is-invalid';
+      }
+    } catch (E) {
+      return 'form-control';
+    }
+  }
+
   private callbackError(error: any) {
-    alert('Ocorreu um erro ao salvar');
+    this.alert.type = 'danger';
+    if (error.status == 422) {
+      this.alert.message = "Não foi possível salvar o registro. Os campos destacados estão inválidos.";
+    } else {
+      this.alert.message = 'Ocorreu um problema ao salvar o registro.';
+    }
+    this.errors = error.error;
     console.log(error);
   }
 }

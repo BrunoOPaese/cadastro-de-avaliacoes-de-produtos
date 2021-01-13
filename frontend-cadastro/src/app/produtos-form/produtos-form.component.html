@@ -1,23 +1,24 @@
 <div class="row mt-3">
     <div class="col-12">
         <app-form-title title="Cadastro de produtos"></app-form-title>
+        <app-alert #alert></app-alert>
         <form action="" method="post">
             <input type="hidden" name="id" id="id" [(ngModel)]="item.id">
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="name">Nome</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="nome" [(ngModel)]="item.name"/>
+                    <input type="text" name="name" [ngClass]='markFields("name")' class="form-control" id="name" placeholder="nome" [(ngModel)]="item.name"/>
                 </div>
                 <div class="form-group col-6">
                     <label for="price">Preço</label>
-                    <input type="number" name="price" step="any" id="price" class="form-control" placeholder="preço" [(ngModel)]="item.price"/>
+                    <input type="number" name="price" step="any" [ngClass]='markFields("price")' id="price" class="form-control" placeholder="preço" [(ngModel)]="item.price"/>
 
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="description">Descrição</label>
-                    <textarea name="description" id="description" class="form-control" rows="5" [(ngModel)]="item.description"></textarea>
+                    <textarea name="description" id="description" [ngClass]='markFields("description")' class="form-control" rows="5" [(ngModel)]="item.description"></textarea>
                 </div>
             </div>
             <div class="custom-control custom-switch">

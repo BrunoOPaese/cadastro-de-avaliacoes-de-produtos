@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductRatingsService } from '../product-ratings.service';
 import { ProductRatings } from '../ProductRatings';
@@ -12,6 +12,7 @@ export class RatingsListComponent implements OnInit {
 
   items: ProductRatings[];
   product_id: number;
+  @ViewChild('alert') alert;
 
   constructor(protected service: ProductRatingsService, private route: ActivatedRoute, private router: Router) {
     this.product_id = parseInt(this.route.snapshot.paramMap.get('product_id'));
@@ -39,13 +40,15 @@ export class RatingsListComponent implements OnInit {
       );
   }
   private callbackSuccess() {
-    alert("registro excluido com sucesso");
+    this.alert.type = "success";
+    this.alert.message = 'Registro excluído com sucesso';
     this.refresh();
   }
 
   private callbackError(error: any) {
-    alert('Ocorreu um problema ao excluir');
-    console.log(error);
+    this.alert.type = 'danger';
+    this.alert.message = error.error.error;
+    console.log(error.error.error);
   }
 
 

@@ -1,23 +1,24 @@
 <div class="row mt-3">
     <div class="col-12">
         <app-form-title title="Cadastro de avaliações"></app-form-title>
+        <app-alert #alert></app-alert>
         <form action="" method="post">
             <input type="hidden" name="id" id="id" [(ngModel)]="item.id">
             <div class="form-row">
                 <div class="form-group col-6">
                     <label for="name">Nome</label>
-                    <input type="text" name="name" class="form-control" id="name" placeholder="nome" [(ngModel)]="item.name"/>
+                    <input type="text" name="name" [ngClass]='markFields("name")' class="form-control" id="name" placeholder="nome" [(ngModel)]="item.name"/>
                 </div>
                 <div class="form-group col-6">
                     <label for="grade">Avaliação</label>
-                    <input type="number" name="grade" step="0.1" id="grade" class="form-control" placeholder="" [(ngModel)]="item.grade"/>
+                    <input type="number" name="grade" step="0.1" [ngClass]='markFields("grade")' id="grade" class="form-control" placeholder="" [(ngModel)]="item.grade"/>
 
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="comment">Comentário</label>
-                    <textarea name="comment" id="comment" class="form-control" rows="5" [(ngModel)]="item.comment"></textarea>
+                    <textarea name="comment" id="comment" [ngClass]='markFields("comment")' class="form-control" rows="5" [(ngModel)]="item.comment"></textarea>
                 </div>
             </div>
         </form>
