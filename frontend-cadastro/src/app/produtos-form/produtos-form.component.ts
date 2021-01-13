@@ -21,11 +21,17 @@ export class ProdutosFormComponent implements OnInit {
     let id: string = this.route.snapshot.paramMap.get("id");
 
     if (id != null) {
-      this.service.getOne(parseInt(id)).subscribe((data: any) => this.item = data);
+      this.service.getOne(parseInt(id)).subscribe(
+        (data: any) => {
+            this.item = data
+            console.log(this.item)
+          }
+        );
     }
   }
   
   save() {
+    console.log(this.item)
     if(this.item.id != undefined) {
       this.service.update(this.item).subscribe(
         (data: any) => this.callbackSuccess(),

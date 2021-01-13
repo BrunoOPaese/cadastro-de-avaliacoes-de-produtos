@@ -32,7 +32,7 @@ const routes: Routes = [
     component: RatingsFormComponent
   },
   {
-    path: 'products/:product_id/newRating',
+    path: 'products/:product_id/newrating',
     component: RatingsFormComponent
   }
 ];

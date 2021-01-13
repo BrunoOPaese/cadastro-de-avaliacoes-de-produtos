@@ -25,6 +25,7 @@ export class ProductService {
   }
 
   getOne(id: number) {
+    console.log(id);
     let url: string = this.baseUrl + '/' + id;
     return this.http.get<Product>(url, {headers: this.headers});
   }
