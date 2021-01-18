@@ -68,7 +68,20 @@ export class ProdutosFormComponent implements OnInit {
   private callbackError(error: any) {
     this.alert.type = 'danger';
     if (error.status == 422) {
-      this.alert.message = "Não foi possível salvar o registro. Os campos destacados estão inválidos.";
+      this.alert.message = "Não foi possível salvar o registro.";
+      let errorAR = Object.values(error.error);
+      errorAR.forEach(error => {
+        if (error[0].indexOf('description') !== -1) {
+          error = error[0].replace('description', 'descrição');
+        }
+        if (error[0].indexOf('name') !== -1) {
+          error = error[0].replace('name', 'nome');
+        }
+        if (error[0].indexOf('price') !== -1) {
+          error = error[0].replace('price', 'preço');
+        }
+        this.alert.message += ' - '+error+'\n';
+      });
     } else {
       this.alert.message = 'Ocorreu um problema ao salvar o registro.';
     }

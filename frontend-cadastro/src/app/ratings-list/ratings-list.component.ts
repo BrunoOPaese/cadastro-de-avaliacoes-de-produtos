@@ -27,8 +27,21 @@ export class RatingsListComponent implements OnInit {
   }
 
   refresh() {
+    let that = this;
     this.service.getAll(this.product_id).subscribe(
-      (data: any) => this.items = data
+      function(data: any) {
+        if (data.length == 0) {
+          let container = document.getElementById('table-container');
+          container.innerHTML = '';
+          container.appendChild(function() {
+            let message = document.createElement('h3');
+            message.innerText = 'Não há nenhuma avaliação cadastrada';
+            return message;
+          }());
+        }else {
+          that.items = data;
+        }
+      }
     );
 
   }

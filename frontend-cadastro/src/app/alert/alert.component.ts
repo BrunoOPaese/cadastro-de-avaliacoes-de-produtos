@@ -9,6 +9,7 @@ export class AlertComponent implements OnInit {
 
   type: string;
   message: string;
+  errors: any;
 
   constructor() { 
     this.type = '';
