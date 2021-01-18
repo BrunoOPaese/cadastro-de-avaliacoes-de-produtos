@@ -26,7 +26,7 @@ export class ProdutosListComponent implements OnInit {
   }
 
   delete(id: number) {
-    this.service.delete(1854963457).subscribe(
+    this.service.delete(id).subscribe(
         (data: any) => this.callbackSuccess(),
         (error: any) => this.callbackError(error)
       );

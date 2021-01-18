@@ -5,18 +5,18 @@
         <table class="table table-striped">
             <tr>
                 <th>Id</th>
-                <th>Nome</th>
-                <th>Descrição</th>
+                <th style="max-width: 150px;">Nome</th>
+                <th style="max-width: 150px;">Descrição</th>
                 <th>Preço</th>
                 <th>Ações</th>
             </tr>
             <tr *ngFor="let item of items">
                 <td>{{ item.id }}</td>
-                <td>
+                <td style="max-width: 150px; overflow: hidden;">
                     {{ item.name }}
                     <span *ngIf="!item.active" class="badge badge-secondary">inativo</span>
                 </td>
-                <td>{{ item.description }}</td>
+                <td style="max-width: 150px; overflow: hidden;">{{ item.description }}</td>
                 <td>{{ item.price }}</td>
                 <td>
                     <div class="btn-group">

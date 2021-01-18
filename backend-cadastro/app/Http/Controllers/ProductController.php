@@ -98,7 +98,7 @@ class ProductController extends Controller
             $product->delete();
             return response()->json($product, 200);
         } catch (ModelNotFoundException $e) {
-            return response()->json(['error' => 'Registro não encontrado'], 404);
+            return response()->json(['error' => $id], 404);
         }
     }
 }
